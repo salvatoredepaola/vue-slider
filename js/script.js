@@ -59,10 +59,25 @@ createApp({
         prevSlide() {
             console.log("prevSlide");
             this.currentSlide--;
+            if (this.currentSlide<0) {
+                this.currentSlide = 4;
+            }
         },
         nextSlide() {
             console.log("nextSlide");
-            this.currentSlide++;
+            if (this.currentSlide==4) {
+                this.currentSlide = 0;
+            } else {
+                this.currentSlide++;    
+            }
+        },
+        classe(i) {
+            let classe = "thumb";
+            if (i == this.currentSlide) {
+                classe += " active";
+            }
+            return classe;
         }
+
     }
 }).mount('#app')

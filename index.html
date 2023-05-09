@@ -27,7 +27,7 @@
                 <div  class="thumbs">
                     <button @click="prevSlide()" class="prev"></button>
                     <button @click="nextSlide()" class="next"></button>
-                    <div v-for = "immagini in slides" class="thumb">
+                    <div v-for = "(immagini,i) in slides" :class="(currentSlide == i ) ? 'thumb active' : 'thumb'" >
                         <img :src="immagini.image" alt="immagini.title">
                     </div>
                 </div>
