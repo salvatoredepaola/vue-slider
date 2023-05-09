@@ -15,24 +15,28 @@
 
         <div class="container">
             <div class="slider-wrapper" tabindex="0">
-
-                <div class="item">
-                    <img :src="slides[currentSlide].image" alt="Spiderman" />
+                
+                <div class="item" >
+                    <img :src="slides[currentSlide].image" alt="Spiderman" @mouseover="playOver()" @mouseleave="stopOver()"/>
                     <div class="text">
                         <h3>{{slides[currentSlide].title}}</h3>
                         <p>{{slides[currentSlide].text}}</p>
                     </div>
                 </div>
 
-                <div  class="thumbs">
+                <div  class="thumbs cursor">
                     <button @click="prevSlide()" class="prev"></button>
                     <button @click="nextSlide()" class="next"></button>
-                    <div v-for = "(immagini,i) in slides" :class="(currentSlide == i ) ? 'thumb active' : 'thumb'" >
+                    <div v-for = "(immagini,i) in slides" :class="(currentSlide == i ) ? 'thumb active' : 'thumb'" @click="selezionaImmagine(i)">
                         <img :src="immagini.image" alt="immagini.title">
                     </div>
                 </div>
 
             </div>
+        </div>
+
+        <div class="container align-top">
+            <button @click="tempo()">Autoplay</button>
         </div>
 
     </div>

@@ -30,6 +30,7 @@ createApp({
         data() {
             return {
                 currentSlide: 0,
+                autoscroll: null,
                 slides: [
                     {
                         image: 'img/01.webp',
@@ -77,7 +78,27 @@ createApp({
                 classe += " active";
             }
             return classe;
-        }
+        },
+        selezionaImmagine(i){
+            this.currentSlide = i;
+        },
+        tempo(){
+            if (this.autoscroll == null) {
+                this.playOver();
+            } else {
+                this.stopOver();
+            }
+        },
+        playOver() {
+            this.autoscroll = setInterval(() => {
+                this.nextSlide();
+            }, 1000);
+        },
+        stopOver() {
+            clearInterval(this.autoscroll);
+            this.autoscroll = null
+        },
 
     }
 }).mount('#app')
+
