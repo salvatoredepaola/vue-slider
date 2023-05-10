@@ -61,12 +61,12 @@ createApp({
             console.log("prevSlide");
             this.currentSlide--;
             if (this.currentSlide<0) {
-                this.currentSlide = 4;
+                this.currentSlide = this.slides.length - 1;
             }
         },
         nextSlide() {
             console.log("nextSlide");
-            if (this.currentSlide==4) {
+            if (this.currentSlide == this.slides.length - 1) {
                 this.currentSlide = 0;
             } else {
                 this.currentSlide++;    
